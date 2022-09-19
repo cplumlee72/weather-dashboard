@@ -23,47 +23,21 @@
           <div class="searchBox">
             <input
               type="search"
-              class="form-control"
+              class="form-control userInput"
               placeholder="Search..."
-              aria-label="Search"
             />
             <button class="btn bg-primary" type="submit">Search</button>
           </div>
 
           <br />
 
-          <div class="list-group d-grid gap-2 w-auto">
-            <button
-              class="list-group-item rounded-3 py-3"
-              for="listGroupCheckableRadios1"
-            >
-              Some city
-            </button>
-            <button
-              class="list-group-item rounded-3 py-3"
-              for="listGroupCheckableRadios2"
-            >
-              Some city
-            </button>
-            <button
-              class="list-group-item rounded-3 py-3"
-              for="listGroupCheckableRadios3"
-            >
-              Some city
-            </button>
-            <button
-              class="list-group-item rounded-3 py-3"
-              for="listGroupCheckableRadios4"
-            >
-              Some city
-            </button>
-          </div>
+          <div class="list-group d-grid gap-2 w-auto cities"> </div>
         </div>
         <div class="bg-light border rounded-3">
 
           <div class="row-fluid h-50 p-5 bg-light border rounded-3 curCty">
             <h2>Current City</h2>
-            <ul style="list-style: none;">
+            <ul style="list-style: none;" id="curcityConditions">
               <li>Temp:</li>
               <li>Wind:</li>
               <li>Humidity:</li>
