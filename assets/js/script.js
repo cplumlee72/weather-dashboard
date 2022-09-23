@@ -59,8 +59,7 @@ function getFiveDay() {
 
 function searchCity(event) {
     console.log(event);
-    currentCityCond[0].textContent = userSearch.value
-    
+    currentCityCond[0].textContent = userSearch.value    
     $(".cities").append('<button class= "list-group-item rounded-3 py-3">'+userSearch.value+ '</button>') 
     console.log(userSearch.value)
     getWeather();
