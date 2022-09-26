@@ -9,3 +9,7 @@ header {
 .weatherContent {
     background-color: blue;
 }
+
+h4 {
+    text-align: center;
+}

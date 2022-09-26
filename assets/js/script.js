@@ -77,9 +77,9 @@ function searchCity(event) {
       cityArr.push(userSearch.value.toUpperCase());
       window.localStorage.setItem("newCity", JSON.stringify(cityArr));
       $(".cities").append(
-        '<button class= "list-group-item rounded-3 py-3">' +
+        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3 ctybtn">' +
           userSearch.value.toUpperCase() +
-          "</button>"
+          '</button>'
       );
     } else {
       console.log("ERROR");
@@ -96,9 +96,9 @@ function generateButtons() {
     console.log(Element);
     if (Element) {
       $(".cities").append(
-        '<button class="list-group-item rounded-3 py-3 ctybtn">' +
+        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3   ctybtn">' +
           Element +
-          "</button>"
+          '</button>'
       );
     }
   });
