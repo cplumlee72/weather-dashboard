@@ -9,7 +9,6 @@ window.addEventListener("load", function() {
   };    
   var cityArr = JSON.parse(window.localStorage.getItem("newCity"));
   cityArr.forEach((Element) => {
-    console.log(Element);
     if (Element) {
       $(".cities").append(
         '<button type="button" class="btn btn-info list-group-item rounded-3 py-3   ctybtn">' +
@@ -79,7 +78,7 @@ function getWeather() {
         "Humidity: " + data.main.humidity + " %";
       getFiveDay();
     });
-}
+};
 
 function getFiveDay() {
   var coordinates = JSON.parse(
