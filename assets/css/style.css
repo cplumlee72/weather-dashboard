@@ -2,14 +2,37 @@ header {
     background-color: aqua;
 }
 
-.sideBar {
-    background-color: grey;
+body {
+    background-color: #212529;
 }
 
-.weatherContent {
-    background-color: blue;
-}
 
 h4 {
     text-align: center;
+}
+
+div {
+    color: grey;
+}
+
+.curCty {
+    background-color: #212529;
+    
+}
+
+input, textarea{
+    background-color:#666;
+    color: #FFF;
+}
+
+.form-control {
+    color: grey;
+}
+
+input[type="search"]:focus {
+    color: rgb(136, 137, 151);
+}
+
+.ctyBtn {
+    color: #666;
 }

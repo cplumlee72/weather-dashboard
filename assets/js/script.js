@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
   cityArr.forEach((Element) => {
     if (Element) {
       $(".cities").append(
-        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3   ctybtn">' +
+        '<button type="button" class="btn btn-dark rounded-3 py-3 text-muted ctybtn">' +
           Element +
           '</button>'
       );
@@ -24,7 +24,7 @@ window.addEventListener("load", function() {
         cityArr.push(userSearch.value.toUpperCase());
         window.localStorage.setItem("newCity", JSON.stringify(cityArr));
         $(".cities").append(
-          '<button type="button" class="btn btn-info list-group-item rounded-3 py-3 ctybtn">' +
+          '<button type="button" class="btn btn-dark rounded-3 py-3 text-muted ctybtn">' +
             userSearch.value.toUpperCase() +
             '</button>'
         );
