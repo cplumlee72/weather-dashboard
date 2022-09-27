@@ -1,13 +1,59 @@
 var userSearch = $(".userInput")[0];
 var currentCityCond = document.querySelectorAll(".curCty")[0].children;
 var cityArr = JSON.parse(window.localStorage.getItem("newCity"));
+var startCities = ["DALLAS", "DENVER"];
+
+window.addEventListener("load", function() {  
+  if (!window.localStorage.getItem("newCity")) {
+    window.localStorage.setItem("newCity", JSON.stringify(startCities));
+  };    
+  var cityArr = JSON.parse(window.localStorage.getItem("newCity"));
+  cityArr.forEach((Element) => {
+    console.log(Element);
+    if (Element) {
+      $(".cities").append(
+        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3   ctybtn">' +
+          Element +
+          '</button>'
+      );
+    }
+  });
+
+  function searchCity(event) {
+    if (userSearch.value) {
+      if (cityArr.indexOf(userSearch.value.toUpperCase()) === -1) {
+        cityArr.push(userSearch.value.toUpperCase());
+        window.localStorage.setItem("newCity", JSON.stringify(cityArr));
+        $(".cities").append(
+          '<button type="button" class="btn btn-info list-group-item rounded-3 py-3 ctybtn">' +
+            userSearch.value.toUpperCase() +
+            '</button>'
+        );
+        $(".ctybtn").on("click", cityButtonHandler);      
+      } else {
+        console.log("ERROR");
+      };  
+      currentCityCond[0].textContent = userSearch.value.toUpperCase();
+      getWeather();
+    } else alert("You must input a city to search for!");
+    return;
+  };
+
+  $(".ctybtn").on("click", cityButtonHandler);
+  $("#srchbtn").on("click", searchCity);
+
+
+function cityButtonHandler(event) {
+  if (event) {
+  currentCityCond[0].textContent = event.target.textContent;
+  userSearch.value = event.target.textContent;  
+  getWeather();
+  };
+};
 
 function getWeather() {
   fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-      userSearch.value +
-      "&units=imperial&appid=cb4022af9ee9d0ebd691e41110e4c85b"
-  )
+    "https://api.openweathermap.org/data/2.5/weather?q=" + userSearch.value + "&units=imperial&appid=cb4022af9ee9d0ebd691e41110e4c85b")
     .then(function (resp) {
       return resp.json();
     }) // Convert data to json
@@ -69,57 +115,10 @@ function getFiveDay() {
         }
       });
     });
-}
+};
 
-function searchCity(event) {
-  if (userSearch.value) {
-    if (cityArr.indexOf(userSearch.value.toUpperCase()) === -1) {
-      cityArr.push(userSearch.value.toUpperCase());
-      window.localStorage.setItem("newCity", JSON.stringify(cityArr));
-      $(".cities").append(
-        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3 ctybtn">' +
-          userSearch.value.toUpperCase() +
-          '</button>'
-      );
-    } else {
-      console.log("ERROR");
-    }
+});
 
-    currentCityCond[0].textContent = userSearch.value.toUpperCase();
-    getWeather();
-  } else alert("You must input a city to search for!");
-}
 
-function generateButtons() {
-  var cityArr = JSON.parse(window.localStorage.getItem("newCity"));
-  cityArr.forEach((Element) => {
-    console.log(Element);
-    if (Element) {
-      $(".cities").append(
-        '<button type="button" class="btn btn-info list-group-item rounded-3 py-3   ctybtn">' +
-          Element +
-          '</button>'
-      );
-    }
-  });
-  $(".ctybtn").on("click", cityButtonHandler);
-}
 
-function setStorage() {
-  var startCities = ["DALLAS", "DENVER"];
-  if (!window.localStorage.getItem("newCity")) {
-    window.localStorage.setItem("newCity", JSON.stringify(startCities));
-  }
 
-  generateButtons();
-}
-
-function cityButtonHandler(event) {
-  console.log(event);
-  currentCityCond[0].textContent = event.target.textContent;
-  userSearch.value = event.target.textContent;
-  getWeather();
-}
-
-window.addEventListener("load", setStorage);
-$(".btn").on("click", searchCity);
