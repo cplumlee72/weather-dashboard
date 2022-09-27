@@ -16,7 +16,7 @@ This is a simple weather application to get current and five-day forecast weathe
 
 
 
-![image of website](./assets/images/Demo.gif)
+![image of website](./assets/images/demo.gif)
 
 ## Credits 
 
