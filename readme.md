@@ -1,4 +1,4 @@
-# 0 Challenge: Weather Dashboard 
+Weather Dashboard 
 
 ## Description
 This is a simple weather application to get current and five-day forecast weather conditions for a city of your choosing!  
